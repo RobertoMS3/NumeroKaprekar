@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+</body>
+
+<script>
+function obtenerKaprekar(num) {
+    var numStr = num.toString();
+    while (numStr.length < 4) {
+        numStr = '0' + numStr; 
+    }
+
+    var ascendente = parseInt(numStr.split('').sort().join('')); 
+    var descendente = parseInt(numStr.split('').sort((a, b) => b - a).join('')); 
+
+    return descendente - ascendente;
+}
+
+
+var numero = prompt("Por favor ingresa un número de 4 dígitos:");
+
+numero = parseInt(numero);
+
+if (isNaN(numero) || numero < 1000 || numero > 9999) {
+    console.log("El número ingresado no es válido.");
+} else {
+    var iteraciones = 0;
+    while (numero !== 6174) {
+        numero = obtenerKaprekar(numero);
+        iteraciones++;
+    }
+    console.log("Se necesitan " + iteraciones + " para llegar a 6174.");
+}
+</script>
+</html>
